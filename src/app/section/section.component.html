@@ -1,0 +1,26 @@
+<div class="section" [ngClass]="sectionSelectedClass()">
+  <div class="section-container">
+    <h2 class="section-container__number">1</h2>
+    <div class="section-container__info">
+      <h4>{{sectionInfo?.name}}</h4>
+      <ng-container *ngIf="!questionsActive; else alternativeContent">
+        <p>Total questions: {{sectionInfo?.totalQuestions}}, <span>answered: {{sectionInfo?.answeredQuestions}}</span></p>
+      </ng-container>
+    </div>
+  </div>
+  <ng-container *ngIf="!questionsActive; else questions"> </ng-container>
+</div>
+
+<ng-template #questions>
+  
+  <div class="section-container__questions">
+    <app-question type="HS"></app-question>
+    <app-question type="MEDIUM"></app-question>
+    <app-question type="DROPDOWN"></app-question>
+    <app-question type="HS" [haveDepend]="true"></app-question>
+
+  </div>
+</ng-template>
+<ng-template #alternativeContent>
+  <p><b>0</b> of 7</p>
+</ng-template>
