@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Section } from './models/Section';
 import { SectionService } from './services/section.service';
+import { QuestionsService } from './services/questions.service';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +13,9 @@ export class AppComponent implements OnInit {
 
   sectionList?: Section[];
 
-  constructor(private sectionService: SectionService) {}
-  ngOnInit(): void {
-    this.sectionService.getAll().subscribe((data: any) => {
+  constructor(private sectionService: SectionService, private questionService: QuestionsService) {}
+  ngOnInit() {
+     this.sectionService.getAll().subscribe((data: any) => {
       console.log(data);
       this.sectionList = data;
     });

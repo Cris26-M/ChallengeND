@@ -1,14 +1,30 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Question } from 'src/app/models/Question';
 
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
-  styleUrls: ['./question.component.scss']
+  styleUrls: ['./question.component.scss'],
 })
-export class QuestionComponent {
-@Input()
-type = 'HS';
+export class QuestionComponent implements OnInit {
+  ngOnInit(): void {
+    this.haveDepend = this.questionInfo?.hasOwnProperty("dependentQuestion");
+    this.questionNumber = this.sectionNumber + '.' + this.index
+  
+  }
+  @Input()
+  type = 'HS';
 
-@Input()
-haveDepend = false
+  @Input()
+  index = 0;
+
+  @Input()
+  sectionNumber = 0;
+
+  questionNumber = '';
+
+  haveDepend? = false;
+
+  @Input()
+  questionInfo?: Question;
 }

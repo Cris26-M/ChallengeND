@@ -1,209 +1,180 @@
-<div class="question" >
-  <h3>1.1</h3>
-  <h3>* QUESTION HS !</h3>
+<div class="question">
+  <h3>{{questionNumber}}</h3>
+  <h3>{{ questionInfo?.displayText }}</h3>
   <ng-container [ngSwitch]="type">
-    <div class="question-input hs" *ngSwitchCase="'HS'">
-      <label for="option1"
-        ><input type="radio" id="option1" name="options" value="option1" />
-        OPTION1</label
-      >
-
-      <label for="option2"
-        ><input type="radio" id="option2" name="options" value="option2" />
-        OPTION2</label
-      >
-
-      <label for="option3"
-        ><input type="radio" id="option3" name="options" value="option3" />
-        OPTION3</label
-      >
-
-      <label for="option4"
-        ><input type="radio" id="option4" name="options" value="option4" />
-        OPTION4</label
-      >
-    </div>
-    <div class="question-input medium" *ngSwitchCase="'MEDIUM'">
-      <label for="Acceptable"
-        ><input
-          type="radio"
-          id="Acceptable"
-          name="likert"
-          value="Acceptable"
-        /><span>Acceptable</span></label
-      >
-
-      <label for="Not-Acceptable"
-        ><input
-          type="radio"
-          id="Not-Acceptable"
-          name="likert"
-          value="Not-Acceptable"
-        /><span> Not Acceptable</span></label
-      >
-
-      <label for="Not-Verified"
-        ><input
-          type="radio"
-          id="Not-Verified"
-          name="likert"
-          value="Not-Verified"
-        />
-        <span>Not Verified</span></label
-      >
-    </div>
-    <div class="question-input dropdown" *ngSwitchCase="'DROPDOWN'">
-      <label for="dropdown"
+    <div class="question-input hs" *ngSwitchCase="'radio'">
+      <ng-container *ngFor="let option of questionInfo?.choiceOptions">
+        <label for="option1"
+          ><input
+            type="radio"
+            id="{{ option.value }}"
+            name="options"
+            value="{{ option.value }}"
+          />
+          {{ option.label }}</label
         >
+      </ng-container>
+    </div>
+    <div class="question-input medium" *ngSwitchCase="'three_buttons'">
+      <ng-container *ngFor="let option of questionInfo?.choiceOptions">
+        <label for="Acceptable"
+          ><input
+            type="radio"
+            id="{{ option.label }}"
+            name="likert"
+            value="{{ option.value }}"
+          /><span>{{ option.label }}</span></label
+        >
+      </ng-container>
+    </div>
+    <div class="question-input dropdown" *ngSwitchCase="'dropdown'">
+      <label for="dropdown">
         <span>Select an option</span>
-        <select name="dropdown" id="">
-            <option value="option 1">OPTION 1</option>
-            <option value="option 2">OPTION 2</option>
-            <option value="option 3">OPTION 3</option>
-            <option value="option 4">OPTION 4</option>
+        <select name="dropdown">
+          <option
+            *ngFor="let option of questionInfo?.choiceOptions"
+            value="{{ option.value }}"
+          >
+            {{ option.label }}
+          </option>
         </select>
-        </label
-      >
+      </label>
     </div>
   </ng-container>
   <ng-container *ngIf="haveDepend">
-    <div class="dependantQuestion" >
-        <h3>1.1</h3>
-        <h3>* QUESTION HS !</h3>
-        <ng-container [ngSwitch]="type">
-          <div class="question-input hs" *ngSwitchCase="'HS'">
-            <label for="option1"
-              ><input type="radio" id="option1" name="options" value="option1" />
-              OPTION1</label
-            >
-      
-            <label for="option2"
-              ><input type="radio" id="option2" name="options" value="option2" />
-              OPTION2</label
-            >
-      
-            <label for="option3"
-              ><input type="radio" id="option3" name="options" value="option3" />
-              OPTION3</label
-            >
-      
-            <label for="option4"
-              ><input type="radio" id="option4" name="options" value="option4" />
-              OPTION4</label
-            >
-          </div>
-          <div class="question-input medium" *ngSwitchCase="'MEDIUM'">
-            <label for="Acceptable"
-              ><input
-                type="radio"
-                id="Acceptable"
-                name="likert"
-                value="Acceptable"
-              /><span>Acceptable</span></label
-            >
-      
-            <label for="Not-Acceptable"
-              ><input
-                type="radio"
-                id="Not-Acceptable"
-                name="likert"
-                value="Not-Acceptable"
-              /><span> Not Acceptable</span></label
-            >
-      
-            <label for="Not-Verified"
-              ><input
-                type="radio"
-                id="Not-Verified"
-                name="likert"
-                value="Not-Verified"
-              />
-              <span>Not Verified</span></label
-            >
-          </div>
-          <div class="question-input dropdown" *ngSwitchCase="'DROPDOWN'">
-            <label for="dropdown"
-              >
-              <span>Select an option</span>
-              <select name="dropdown" id="">
-                  <option value="option 1">OPTION 1</option>
-                  <option value="option 2">OPTION 2</option>
-                  <option value="option 3">OPTION 3</option>
-                  <option value="option 4">OPTION 4</option>
-              </select>
-              </label
-            >
-          </div>
-        </ng-container>
-      </div>
-      <div class="dependantQuestion" >
-        <h3>1.1</h3>
-        <h3>* QUESTION HS !</h3>
-        <ng-container [ngSwitch]="type">
-          <div class="question-input hs" *ngSwitchCase="'HS'">
-            <label for="option1"
-              ><input type="radio" id="option1" name="options" value="option1" />
-              OPTION1</label
-            >
-      
-            <label for="option2"
-              ><input type="radio" id="option2" name="options" value="option2" />
-              OPTION2</label
-            >
-      
-            <label for="option3"
-              ><input type="radio" id="option3" name="options" value="option3" />
-              OPTION3</label
-            >
-      
-            <label for="option4"
-              ><input type="radio" id="option4" name="options" value="option4" />
-              OPTION4</label
-            >
-          </div>
-          <div class="question-input medium" *ngSwitchCase="'MEDIUM'">
-            <label for="Acceptable"
-              ><input
-                type="radio"
-                id="Acceptable"
-                name="likert"
-                value="Acceptable"
-              /><span>Acceptable</span></label
-            >
-      
-            <label for="Not-Acceptable"
-              ><input
-                type="radio"
-                id="Not-Acceptable"
-                name="likert"
-                value="Not-Acceptable"
-              /><span> Not Acceptable</span></label
-            >
-      
-            <label for="Not-Verified"
-              ><input
-                type="radio"
-                id="Not-Verified"
-                name="likert"
-                value="Not-Verified"
-              />
-              <span>Not Verified</span></label
-            >
-          </div>
-          <div class="question-input dropdown" *ngSwitchCase="'DROPDOWN'">
-            <label for="dropdown"
-              >
-              <span>Select an option</span>
-              <select name="dropdown" id="">
-                  <option value="option 1">OPTION 1</option>
-                  <option value="option 2">OPTION 2</option>
-                  <option value="option 3">OPTION 3</option>
-                  <option value="option 4">OPTION 4</option>
-              </select>
-              </label
-            >
-          </div>
-        </ng-container>
-      </div>
+    <div class="dependantQuestion">
+      <h3>1.1</h3>
+      <h3>* QUESTION HS !</h3>
+      <ng-container [ngSwitch]="type">
+        <div class="question-input hs" *ngSwitchCase="'radio'">
+          <label for="option1"
+            ><input type="radio" id="option1" name="options" value="option1" />
+            OPTION1</label
+          >
+
+          <label for="option2"
+            ><input type="radio" id="option2" name="options" value="option2" />
+            OPTION2</label
+          >
+
+          <label for="option3"
+            ><input type="radio" id="option3" name="options" value="option3" />
+            OPTION3</label
+          >
+
+          <label for="option4"
+            ><input type="radio" id="option4" name="options" value="option4" />
+            OPTION4</label
+          >
+        </div>
+        <div class="question-input medium" *ngSwitchCase="'three_buttons'">
+          <label for="Acceptable"
+            ><input
+              type="radio"
+              id="Acceptable"
+              name="likert"
+              value="Acceptable"
+            /><span>Acceptable</span></label
+          >
+
+          <label for="Not-Acceptable"
+            ><input
+              type="radio"
+              id="Not-Acceptable"
+              name="likert"
+              value="Not-Acceptable"
+            /><span> Not Acceptable</span></label
+          >
+
+          <label for="Not-Verified"
+            ><input
+              type="radio"
+              id="Not-Verified"
+              name="likert"
+              value="Not-Verified"
+            />
+            <span>Not Verified</span></label
+          >
+        </div>
+        <div class="question-input dropdown" *ngSwitchCase="'dropdown'">
+          <label for="dropdown">
+            <span>Select an option</span>
+            <select name="dropdown" id="">
+              <option value="option 1">OPTION 1</option>
+              <option value="option 2">OPTION 2</option>
+              <option value="option 3">OPTION 3</option>
+              <option value="option 4">OPTION 4</option>
+            </select>
+          </label>
+        </div>
+      </ng-container>
+    </div>
+    <div class="dependantQuestion">
+      <h3>1.1</h3>
+      <h3>* QUESTION HS !</h3>
+      <ng-container [ngSwitch]="type">
+        <div class="question-input hs" *ngSwitchCase="'radio'">
+          <label for="option1"
+            ><input type="radio" id="option1" name="options" value="option1" />
+            OPTION1</label
+          >
+
+          <label for="option2"
+            ><input type="radio" id="option2" name="options" value="option2" />
+            OPTION2</label
+          >
+
+          <label for="option3"
+            ><input type="radio" id="option3" name="options" value="option3" />
+            OPTION3</label
+          >
+
+          <label for="option4"
+            ><input type="radio" id="option4" name="options" value="option4" />
+            OPTION4</label
+          >
+        </div>
+        <div class="question-input medium" *ngSwitchCase="'three_buttons'">
+          <label for="Acceptable"
+            ><input
+              type="radio"
+              id="Acceptable"
+              name="likert"
+              value="Acceptable"
+            /><span>Acceptable</span></label
+          >
+
+          <label for="Not-Acceptable"
+            ><input
+              type="radio"
+              id="Not-Acceptable"
+              name="likert"
+              value="Not-Acceptable"
+            /><span> Not Acceptable</span></label
+          >
+
+          <label for="Not-Verified"
+            ><input
+              type="radio"
+              id="Not-Verified"
+              name="likert"
+              value="Not-Verified"
+            />
+            <span>Not Verified</span></label
+          >
+        </div>
+        <div class="question-input dropdown" *ngSwitchCase="'dropdown'">
+          <label for="dropdown">
+            <span>Select an option</span>
+            <select name="dropdown" id="">
+              <option value="option 1">OPTION 1</option>
+              <option value="option 2">OPTION 2</option>
+              <option value="option 3">OPTION 3</option>
+              <option value="option 4">OPTION 4</option>
+            </select>
+          </label>
+        </div>
+      </ng-container>
+    </div>
   </ng-container>
 </div>

@@ -1,4 +1,4 @@
 <app-header></app-header>
-<div class="sections" *ngFor="let section of sectionList">
-  <app-section [questionsActive]="false" [sectionInfo]="section" ></app-section>
+<div class="sections" *ngFor="let section of sectionList, let indexSection = index;">
+  <app-section [questionsActive]="false" [sectionInfo]="section" [sectionNumber]="indexSection+1" ></app-section>
 </div>
