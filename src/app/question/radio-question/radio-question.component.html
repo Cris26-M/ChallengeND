@@ -1,0 +1,16 @@
+<div
+  [ngClass]="{
+    radio: isRadio,
+    'three-buttons': !isRadio
+  }"
+  *ngFor="let option of questionInfo?.choiceOptions"
+>
+  <label for="{{ option.value }}"
+    ><input
+      type="radio"
+      id="{{ option.value }}"
+      [name]="questionInfo?.id"
+      value="{{ option.value }}"
+    /><span>{{ option.label }}</span></label
+  >
+</div>

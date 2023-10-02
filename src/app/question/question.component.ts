@@ -13,7 +13,7 @@ export class QuestionComponent implements OnInit {
   
   }
   @Input()
-  type = 'HS';
+  type = 'dropdown';
 
   @Input()
   index = 0;

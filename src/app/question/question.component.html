@@ -1,0 +1,59 @@
+<div class="question">
+  <h3>{{ questionNumber }}</h3>
+  <h3>{{ questionInfo?.displayText }}</h3>
+  <ng-container
+    *ngIf="
+      questionInfo?.type === 'dropdown' || questionInfo?.type === 'number';
+      else radioQuestions
+    "
+  >
+    <ng-container [ngSwitch]="questionInfo?.type">
+      <app-dropdown-question
+        *ngSwitchCase="'dropdown'"
+        [questionInfo]="questionInfo"
+      ></app-dropdown-question>
+      <app-number-question
+        [questionInfo]="questionInfo"
+        *ngSwitchCase="'number'"
+      ></app-number-question>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="haveDepend">
+    <div
+      class="dependentQuestion"
+      *ngFor="
+        let dependQuestion of questionInfo?.dependentQuestion;
+        let indexDependent = index
+      "
+    >
+      <h3>{{ questionNumber + "." }}{{ indexDependent + 1 }}</h3>
+      <h3>{{ dependQuestion.displayText }}</h3>
+      <ng-container
+        *ngIf="
+          dependQuestion?.type === 'dropdown' ||
+            dependQuestion?.type === 'number';
+          else radioQuestions
+        "
+      >
+        <ng-container [ngSwitch]="dependQuestion?.type">
+          <app-dropdown-question
+            *ngSwitchCase="'dropdown'"
+            [questionInfo]="dependQuestion"
+          ></app-dropdown-question>
+          <app-number-question
+            [questionInfo]="dependQuestion"
+            *ngSwitchCase="'number'"
+          ></app-number-question>
+        </ng-container>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #radioQuestions>
+  <app-radio-question
+    [questionInfo]="questionInfo"
+    class="question-input"
+  ></app-radio-question>
+</ng-template>

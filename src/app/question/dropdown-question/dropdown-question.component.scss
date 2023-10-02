@@ -1,0 +1,21 @@
+
+.dropdown {
+    margin-top: 0.2rem;
+    label {
+      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      select {
+        font-family: "lato";
+        font-size: 1.1rem;
+        padding: 0.2rem 0.5rem;
+      border-color: #3c516855;
+      border-radius: 0.2rem;
+      background-color: transparent;
+      }
+    }
+  }
+  
+  

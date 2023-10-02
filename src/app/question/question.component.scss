@@ -1,0 +1,34 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.question {
+  display: flex;
+  flex-direction: column;
+  font-family: "lato", sans-serif;
+  background-color: #ffffff;
+  padding: 1.2rem;
+  box-shadow: 0 0 4px -1px rgba(88, 88, 88, 0.388); /* All the borders by using the spread properties */
+
+  color: #3c5168;
+  gap: 0.6rem;
+
+  &-input {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+}
+
+.dependentQuestion {
+  display: flex;
+  flex-direction: column;
+  font-family: "lato", sans-serif;
+  background-color: #ffffff;
+  margin-top: 1.5rem;
+  color: #3c5168;
+  gap: 0.6rem;
+}

@@ -11,13 +11,15 @@ import { QuestionsService } from './services/questions.service';
 export class AppComponent implements OnInit {
   title = 'challengeTestApp';
 
-  sectionList?: Section[];
+  sectionList: Section[] = [];
 
-  constructor(private sectionService: SectionService, private questionService: QuestionsService) {}
+  constructor(private sectionService: SectionService) {}
   ngOnInit() {
-     this.sectionService.getAll().subscribe((data: any) => {
-      console.log(data);
-      this.sectionList = data;
-    });
+     this.sectionService.sectionsInfo$.subscribe(list => this.sectionList = list)
+     
+  }
+
+  changeSectionName(test:string){
+    this.sectionService.editTest(test)
   }
 }

@@ -5,16 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SectionComponent } from './section/section.component';
-import { QuestionComponent } from './section/question/question.component';
 import { SectionService } from './services/section.service';
 import { HttpClientModule } from '@angular/common/http';
+import { RadioQuestionComponent } from './question/radio-question/radio-question.component';
+import { DropdownQuestionComponent } from './question/dropdown-question/dropdown-question.component';
+import { QuestionComponent } from './question/question.component';
+import { NumberQuestionComponent } from './question/number-question/number-question.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SectionComponent,
-    QuestionComponent
+    QuestionComponent,
+    RadioQuestionComponent,
+    DropdownQuestionComponent,
+    NumberQuestionComponent
   ],
   imports: [
     BrowserModule,
