@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Answer } from 'src/app/models/Answer';
 import { Question } from 'src/app/models/Question';
 
 @Component({
@@ -9,4 +10,16 @@ import { Question } from 'src/app/models/Question';
 export class DropdownQuestionComponent {
   @Input()
   questionInfo?: Question;
+
+  @Output()
+  handlerSelect = new EventEmitter<Answer>();
+
+  selectedAnswer = '';
+
+  onSelect() {
+       this.handlerSelect.emit({
+        answer: this.selectedAnswer,
+        id: this.questionInfo?.id
+       });
+  }
 }

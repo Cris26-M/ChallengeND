@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NumberQuestionComponent } from './number-question.component';
+import { FormsModule } from '@angular/forms';
 
 describe('NumberQuestionComponent', () => {
   let component: NumberQuestionComponent;
@@ -8,6 +9,9 @@ describe('NumberQuestionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [
+        FormsModule
+      ],
       declarations: [NumberQuestionComponent]
     });
     fixture = TestBed.createComponent(NumberQuestionComponent);

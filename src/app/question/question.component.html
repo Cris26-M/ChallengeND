@@ -1,6 +1,8 @@
 <div class="question">
   <h3>{{ questionNumber }}</h3>
-  <h3>{{ questionInfo?.displayText }}</h3>
+  <h3>
+    {{ questionInfo?.importantIndicator + " " + questionInfo?.displayText }}
+  </h3>
   <ng-container
     *ngIf="
       questionInfo?.type === 'dropdown' || questionInfo?.type === 'number';
@@ -11,15 +13,17 @@
       <app-dropdown-question
         *ngSwitchCase="'dropdown'"
         [questionInfo]="questionInfo"
+        (handlerSelect)="handlerAnswer($event)"
       ></app-dropdown-question>
       <app-number-question
         [questionInfo]="questionInfo"
         *ngSwitchCase="'number'"
+        (handlerSelect)="handlerAnswer($event)"
       ></app-number-question>
     </ng-container>
   </ng-container>
 
-  <ng-container *ngIf="haveDepend">
+  <ng-container *ngIf="dependantActive">
     <div
       class="dependentQuestion"
       *ngFor="
@@ -40,10 +44,12 @@
           <app-dropdown-question
             *ngSwitchCase="'dropdown'"
             [questionInfo]="dependQuestion"
+            (handlerSelect)="handlerAnswer($event)"
           ></app-dropdown-question>
           <app-number-question
             [questionInfo]="dependQuestion"
             *ngSwitchCase="'number'"
+            (handlerSelect)="handlerAnswer($event)"
           ></app-number-question>
         </ng-container>
       </ng-container>
@@ -55,5 +61,6 @@
   <app-radio-question
     [questionInfo]="questionInfo"
     class="question-input"
+    (handlerSelect)="handlerAnswer($event)"
   ></app-radio-question>
 </ng-template>

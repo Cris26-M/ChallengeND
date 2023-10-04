@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DropdownQuestionComponent } from './dropdown-question.component';
+import { FormsModule } from '@angular/forms';
 
 describe('DropdownQuestionComponent', () => {
   let component: DropdownQuestionComponent;
@@ -8,6 +9,9 @@ describe('DropdownQuestionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports:[
+        FormsModule
+      ],
       declarations: [DropdownQuestionComponent]
     });
     fixture = TestBed.createComponent(DropdownQuestionComponent);

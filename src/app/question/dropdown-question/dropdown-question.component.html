@@ -1,8 +1,18 @@
 <div class="dropdown">
-    <label for="{{questionInfo?.id}}">
-      <span>Select an option</span>
-      <select [name]="questionInfo?.id" id="" >
-        <option *ngFor="let option of questionInfo?.choiceOptions" value="{{option.value}}">{{option.label}}</option>
-      </select>
-    </label>
-  </div>
+  <label for="{{ questionInfo?.id }}">
+    <span>Select an option</span>
+    <select
+      name="{{ questionInfo?.id }}"
+      id=""
+      [(ngModel)]="selectedAnswer"
+      (change)="onSelect()"
+    >
+      <option
+        *ngFor="let option of questionInfo?.choiceOptions"
+        value="{{ option.value }}"
+      >
+        {{ option.label }}
+      </option>
+    </select>
+  </label>
+</div>

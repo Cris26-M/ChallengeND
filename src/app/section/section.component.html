@@ -6,7 +6,7 @@
       <ng-container *ngIf="!questionsActive; else alternativeContent">
         <p>
           Total questions: {{ sectionInfo?.totalQuestions }},
-          <span>answered: {{ sectionInfo?.answeredQuestions }}</span>
+          <span>answered: {{ answeredLabel }}</span>
         </p>
       </ng-container>
     </div>
@@ -22,12 +22,13 @@
       [index]="indexQuestion + 1"
       [type]="question.type"
       [questionInfo]="question"
+      [totalQuestions] = "questions?.length || 0"
     ></app-question>
   </div>
 </ng-template>
 <ng-template #alternativeContent>
   <p>
-    <b>{{ sectionInfo?.answeredQuestions }}</b> of
+    <b>{{ answeredLabel }}</b> of
     {{ sectionInfo?.totalQuestions }}
   </p>
 </ng-template>

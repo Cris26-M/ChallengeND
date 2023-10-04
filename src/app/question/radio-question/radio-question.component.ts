@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Answer } from 'src/app/models/Answer';
 import { Question } from 'src/app/models/Question';
 
 @Component({
@@ -19,4 +20,16 @@ export class RadioQuestionComponent implements OnInit {
   questionInfo?: Question;
 
   isRadio = true;
+
+  @Output()
+  handlerSelect = new EventEmitter<Answer>();
+
+  selectedAnswer = '';
+
+  onSelect() {
+       this.handlerSelect.emit({
+        answer: this.selectedAnswer,
+        id: this.questionInfo?.id
+       });
+  }
 }
